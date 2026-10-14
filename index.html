@@ -3,154 +3,387 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Namaswi Mullapudi | Portfolio</title>
+  <title>Namaswi Mullapudi</title>
+  <meta name="description" content="Namaswi Mullapudi: software engineer, Mathematics and Computing at IIT Indore, former Core Tech intern at D. E. Shaw & Co.">
+  <meta property="og:title" content="Namaswi Mullapudi">
+  <meta property="og:description" content="I build pipelines that connect systems never designed to talk to each other.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0d1117;
-      --card: #161b22;
-      --border: #30363d;
-      --text: #c9d1d9;
-      --heading: #f0f6fc;
-      --accent: #58a6ff;
-      --tag: #21262d;
+      --paper: #F2F3F5;
+      --surface: #FFFFFF;
+      --ink: #121722;
+      --graphite: #5A6372;
+      --rule: #D3D7DE;
+      --signal: #1F4BFF;
+      --measure: 66ch;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: "Schibsted Grotesk", system-ui, sans-serif;
+      font-size: 1.0625rem;
       line-height: 1.6;
-      padding: 2.5rem 1rem;
+      background: var(--paper);
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+      -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 800px; margin: 0 auto; }
-    header { margin-bottom: 2.5rem; }
-    h1 { font-size: 2.2rem; color: var(--heading); margin-bottom: 0.2rem; }
-    .subtitle { font-size: 1.05rem; color: #8b949e; margin-bottom: 0.8rem; }
-    .links a {
-      color: var(--accent);
-      text-decoration: none;
-      margin-right: 1.2rem;
-      font-weight: 500;
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
-    .links a:hover { text-decoration: underline; }
-    section { margin-bottom: 2.2rem; }
-    h2 {
-      font-size: 1.2rem;
-      color: var(--heading);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Navigation */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(242, 243, 245, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
     }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.2rem;
-      margin-bottom: 1rem;
+    .nav .wrap {
+      display: flex; justify-content: space-between; align-items: center;
+      height: 3.75rem; gap: 1rem;
     }
-    .card-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.4rem;
+    .nav-name { font-weight: 600; text-decoration: none; }
+    .nav ul { list-style: none; display: flex; gap: 1.6rem; }
+    .nav ul a {
+      text-decoration: none; color: var(--graphite); font-size: 0.95rem;
+      padding-bottom: 2px; border-bottom: 2px solid transparent;
     }
-    .card-title { font-size: 1.05rem; color: var(--heading); font-weight: 600; }
-    .card-title a { color: var(--accent); text-decoration: none; }
-    .date { font-size: 0.85rem; color: #8b949e; }
-    .tags { margin-top: 0.7rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .tag {
-      background: var(--tag);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.15rem 0.5rem;
-      font-size: 0.8rem;
+    .nav ul a:hover, .nav ul a.active { color: var(--ink); border-bottom-color: var(--signal); }
+
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: 1.05fr 1fr;
+      gap: 3.5rem; align-items: center;
+      padding: 6rem 0 5rem;
     }
-    ul { padding-left: 1.2rem; margin-top: 0.4rem; }
-    li { margin-bottom: 0.3rem; }
+    h1 {
+      font-size: clamp(2.6rem, 6.2vw, 4.6rem);
+      font-weight: 800; line-height: 1.02; letter-spacing: -0.03em;
+      margin-bottom: 1.6rem;
+    }
+    .lede {
+      font-size: clamp(1.2rem, 2vw, 1.45rem); line-height: 1.45;
+      max-width: 32ch; margin-bottom: 1.4rem; font-weight: 500;
+    }
+    .meta { color: var(--graphite); max-width: 44ch; margin-bottom: 2rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .btn {
+      display: inline-block; text-decoration: none; font-weight: 600;
+      padding: 0.7rem 1.2rem; border-radius: 6px; border: 1.5px solid var(--ink);
+      font-size: 0.97rem;
+    }
+    .btn-primary { background: var(--ink); color: var(--paper); }
+    .btn-primary:hover { background: var(--signal); border-color: var(--signal); }
+    .btn-plain:hover { border-color: var(--signal); color: var(--signal); }
+
+    figure.schematic svg { width: 100%; height: auto; display: block; overflow: visible; }
+    figure.schematic figcaption {
+      color: var(--graphite); font-size: 0.92rem; margin-top: 1.2rem; max-width: 46ch;
+    }
+    .schematic text { font-family: inherit; font-size: 13px; fill: var(--graphite); }
+    .schematic .out-label { fill: var(--signal); font-weight: 600; }
+    .wire { fill: none; stroke: var(--ink); stroke-width: 1.5;
+      stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 0.9s ease-out forwards; }
+    .wire.w2 { animation-delay: 0.15s; }
+    .wire.w3 { animation-delay: 0.3s; }
+    .wire.out { stroke: var(--signal); stroke-width: 2.25; animation-delay: 1.15s; }
+    .node, .terminal, .out-label { opacity: 0; animation: appear 0.35s ease-out forwards; }
+    .node { animation-delay: 0.95s; }
+    .terminal, .out-label { animation-delay: 1.7s; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes appear { to { opacity: 1; } }
+
+    /* Sections */
+    .section {
+      display: grid; grid-template-columns: 210px 1fr; gap: 3rem;
+      padding: 4.5rem 0; border-top: 1px solid var(--rule);
+    }
+    .section > h2 {
+      font-size: 1.05rem; font-weight: 600; align-self: start;
+      position: sticky; top: 5.5rem;
+    }
+    .section-body { max-width: var(--measure); }
+
+    /* Experience */
+    .role-head {
+      display: flex; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap; gap: 0.25rem 1rem; margin-bottom: 0.2rem;
+    }
+    .role-head h3 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.01em; }
+    .when { color: var(--graphite); font-size: 0.95rem; }
+    .role-title { color: var(--graphite); margin-bottom: 1.1rem; }
+    .role-summary { margin-bottom: 1rem; }
+    .points { padding-left: 1.1rem; }
+    .points li { margin-bottom: 0.55rem; }
+    .points li::marker { color: var(--signal); }
+
+    /* Projects */
+    .project { padding: 0 0 2.6rem; margin-bottom: 2.6rem; border-bottom: 1px solid var(--rule); }
+    .project:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+    .project h3 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.3rem; }
+    .project .purpose { color: var(--graphite); margin-bottom: 1.1rem; }
+    .flow {
+      list-style: none; display: flex; flex-wrap: wrap; align-items: center;
+      gap: 0.4rem 0; margin-bottom: 1.2rem;
+      background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+      padding: 0.85rem 1rem; font-size: 0.93rem;
+    }
+    .flow li { display: flex; align-items: center; }
+    .flow li:not(:last-child)::after {
+      content: ""; display: inline-block; width: 1.6rem; height: 1.5px;
+      background: var(--graphite); margin: 0 0.55rem; position: relative;
+    }
+    .flow li:last-child { color: var(--signal); font-weight: 600; }
+    .stack { color: var(--graphite); font-size: 0.95rem; margin-top: 0.9rem; }
+    .src { font-weight: 600; text-decoration: none; border-bottom: 1.5px solid var(--rule); }
+    .src:hover { border-bottom-color: var(--signal); color: var(--signal); }
+
+    /* Record */
+    .record { display: grid; grid-template-columns: minmax(150px, 0.4fr) 1fr; }
+    .record dt, .record dd { padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+    .record dt { color: var(--graphite); padding-right: 1.5rem; }
+    .record dt:first-of-type, .record dd:first-of-type { padding-top: 0; }
+    .figure { font-weight: 800; font-size: 1.15rem; }
+
+    .courses p { margin-bottom: 1rem; }
+    .courses strong { font-weight: 600; }
+
+    /* Contact */
+    .contact { padding: 5rem 0 6rem; border-top: 1px solid var(--rule); }
+    .contact p { color: var(--graphite); margin-bottom: 1rem; max-width: 50ch; }
+    .mail {
+      display: inline-block; font-size: clamp(1.5rem, 4.4vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.02em; text-decoration: none;
+      border-bottom: 3px solid var(--signal); margin-bottom: 2rem; word-break: break-all;
+    }
+    .mail:hover { color: var(--signal); }
+    .elsewhere { list-style: none; display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .elsewhere a { font-weight: 600; }
+    footer { color: var(--graphite); font-size: 0.85rem; padding-bottom: 2.5rem; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; padding: 3.5rem 0 3.5rem; gap: 2.5rem; }
+      .section { grid-template-columns: 1fr; gap: 1.5rem; padding: 3.5rem 0; }
+      .section > h2 { position: static; }
+      .nav ul { gap: 1rem; }
+      .nav ul li.hide-sm { display: none; }
+    }
+    @media (max-width: 520px) {
+      .record { grid-template-columns: 1fr; }
+      .record dt { border-bottom: 0; padding-bottom: 0; }
+      .record dd { padding-top: 0.2rem; }
+      .nav-name { font-size: 0.95rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .wire { animation: none; stroke-dashoffset: 0; }
+      .node, .terminal, .out-label { animation: none; opacity: 1; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Namaswi Mullapudi</h1>
-      <p class="subtitle">B.Tech in Mathematics and Computing, IIT Indore | Ex-Intern, D. E. Shaw & Co.</p>
-      <div class="links">
-        <a href="https://github.com/Namaswi24" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/namaswi2417" target="_blank">LinkedIn</a>
-        <a href="mailto:namaswichowdary7@gmail.com">Email</a>
+
+  <nav class="nav" aria-label="Main">
+    <div class="wrap">
+      <a class="nav-name" href="#top">Namaswi Mullapudi</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li class="hide-sm"><a href="#record">Record</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+
+    <header class="hero">
+      <div>
+        <h1>Namaswi Mullapudi</h1>
+        <p class="lede">I build pipelines that connect systems never designed to talk to each other, and turn what flows between them into something a person can act on.</p>
+        <p class="meta">Mathematics and Computing at IIT Indore, graduating 2027. Previously a Technological Developer Intern in Core Tech at D. E. Shaw &amp; Co.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:namaswichowdary7@gmail.com">Email me</a>
+          <a class="btn btn-plain" href="resume.pdf" download>Download résumé</a>
+          <a class="btn btn-plain" href="https://github.com/Namaswi24" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
+
+      <figure class="schematic">
+        <svg viewBox="0 0 560 290" role="img" aria-labelledby="schem-title">
+          <title id="schem-title">Three unrelated data sources converging into one pipeline that produces a single actionable output</title>
+          <text x="0" y="50">a 20-year-old automation platform</text>
+          <path class="wire w1" pathLength="1" d="M0 62 H160 C245 62 245 145 330 145"/>
+          <text x="0" y="133">market price history</text>
+          <path class="wire w2" pathLength="1" d="M0 145 H330"/>
+          <text x="0" y="216">contest data from three sites</text>
+          <path class="wire w3" pathLength="1" d="M0 228 H160 C245 228 245 145 330 145"/>
+          <rect class="node" x="330" y="127" width="36" height="36" rx="4" fill="#121722"/>
+          <path class="wire out" pathLength="1" d="M366 145 H548"/>
+          <circle class="terminal" cx="552" cy="145" r="5" fill="#1F4BFF"/>
+          <text class="out-label" x="382" y="131">an alert, a forecast,</text>
+          <text class="out-label" x="382" y="172">a reminder</text>
+        </svg>
+        <figcaption>Most of what I've built has this shape: sources that don't share a format, one pipeline, and an output someone can act on.</figcaption>
+      </figure>
     </header>
 
-    <section>
-      <h2>Experience</h2>
-      <div class="card">
-        <div class="card-head">
-          <span class="card-title">D. E. Shaw & Co. — Technological Developer Intern, Core Tech</span>
-          <span class="date">May 2026 – Jul 2026</span>
-        </div>
-        <ul>
-          <li>Engineered a low-latency data pipeline with Java and Spring Boot to centralize alerts from internal automation platforms.</li>
-          <li>Designed runtime anomaly workflows across the batch ecosystem to surface critical risk signals.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">Java</span>
-          <span class="tag">Spring Boot</span>
-          <span class="tag">System Design</span>
-        </div>
+    <section class="section" id="work" aria-labelledby="work-h">
+      <h2 id="work-h">Work</h2>
+      <div class="section-body">
+        <article>
+          <div class="role-head">
+            <h3>D. E. Shaw &amp; Co.</h3>
+            <span class="when">May – July 2026, Bengaluru</span>
+          </div>
+          <p class="role-title">Technological Developer Intern, Core Tech</p>
+          <p class="role-summary">Connected the firm's 20-year-old core automation platform to its proprietary infrastructure alerting system, so critical operational alerts surface in one place instead of being scattered across tools.</p>
+          <ul class="points">
+            <li>Built the integration pipeline in Java and Spring Boot.</li>
+            <li>Evaluated the existing internal services and designed an optimized architecture that keeps latency low for both real-time event streaming and high-volume snapshot updates.</li>
+            <li>Wrote a pipeline proposal for orchestrating runtime anomaly workflows across the batch ecosystem, defining execution triggers, event timing and delivery so risk signals reach end users.</li>
+          </ul>
+          <p class="stack">Java, Spring Boot, event streaming, system design</p>
+        </article>
       </div>
     </section>
 
-    <section>
-      <h2>Projects</h2>
-      <div class="card">
-        <div class="card-head">
-          <span class="card-title"><a href="https://github.com/Namaswi24" target="_blank">CodeCrux — CP Analytics Platform</a></span>
-        </div>
-        <p>A competitive programming platform with dynamic problem streaks, tag filtering, and contest calendar reminders across Codeforces, LeetCode, and AtCoder.</p>
-        <div class="tags">
-          <span class="tag">MERN Stack</span>
-          <span class="tag">JWT</span>
-          <span class="tag">Clist.by API</span>
-        </div>
-      </div>
+    <section class="section" id="projects" aria-labelledby="projects-h">
+      <h2 id="projects-h">Projects</h2>
+      <div class="section-body">
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-title"><a href="https://github.com/Namaswi24" target="_blank">FinSight — AI Financial Risk & Forecasting</a></span>
-        </div>
-        <p>Predictive modeling pipeline using LSTM and Random Forest models with a 150,000-path Monte Carlo engine to evaluate portfolio risk metrics.</p>
-        <div class="tags">
-          <span class="tag">Python</span>
-          <span class="tag">Monte Carlo</span>
-          <span class="tag">Risk Analytics</span>
-        </div>
-      </div>
+        <article class="project">
+          <h3>FinSight</h3>
+          <p class="purpose">Forecasting prices and quantifying portfolio risk across 10 banking institutions.</p>
+          <ol class="flow" aria-label="How data moves through FinSight">
+            <li>Price history</li>
+            <li>LSTM + Random Forest ensemble</li>
+            <li>Monte Carlo engine</li>
+            <li>VaR, CVaR, Sharpe</li>
+          </ol>
+          <ul class="points">
+            <li>Combined LSTM and Random Forest models in a reinforcement-weighted ensemble, reaching a normalized MAE of 0.01–0.03.</li>
+            <li>Built a Monte Carlo engine generating 150,000 probabilistic price paths (500 paths over a 30-day horizon) to compute aggregate risk metrics for portfolio analysis.</li>
+          </ul>
+          <p class="stack">Python, LSTM, Random Forest, Monte Carlo simulation. <a class="src" href="https://github.com/Namaswi24" target="_blank" rel="noopener">Source on GitHub</a></p>
+        </article>
 
-      <div class="card">
-        <div class="card-head">
-          <span class="card-title"><a href="https://github.com/Namaswi24" target="_blank">EmpathEcho — Real-Time Conversational AI</a></span>
-        </div>
-        <p>Bi-directional real-time audio pipeline using Flask and WebSockets, integrating OpenAI Whisper and fine-tuned emotion classification models.</p>
-        <div class="tags">
-          <span class="tag">Flask</span>
-          <span class="tag">WebSockets</span>
-          <span class="tag">Whisper</span>
-        </div>
+        <article class="project">
+          <h3>CodeCrux</h3>
+          <p class="purpose">One place to track competitive programming across Codeforces, LeetCode and AtCoder.</p>
+          <ol class="flow" aria-label="How data moves through CodeCrux">
+            <li>Clist.by API</li>
+            <li>Express + MongoDB</li>
+            <li>React client</li>
+            <li>Calendar reminders</li>
+          </ol>
+          <ul class="points">
+            <li>Aggregated contest schedules from three platforms with tag filtering and automated Google Calendar reminders.</li>
+            <li>Built user profiles, problem streaks and favorites lists, secured with JWT authentication.</li>
+          </ul>
+          <p class="stack">MongoDB, Express, React, Node.js, JWT. <a class="src" href="https://github.com/Namaswi24" target="_blank" rel="noopener">Source on GitHub</a></p>
+        </article>
+
+        <article class="project">
+          <h3>EmpathEcho</h3>
+          <p class="purpose">A voice assistant that notices how you sound, not just what you say.</p>
+          <ol class="flow" aria-label="How data moves through EmpathEcho">
+            <li>Live audio</li>
+            <li>Whisper</li>
+            <li>Emotion classifier</li>
+            <li>Gemini Pro</li>
+            <li>Spoken reply</li>
+          </ol>
+          <ul class="points">
+            <li>Streamed audio both ways over Flask and WebSockets, with 5-second silence detection to trigger backend processing quickly.</li>
+            <li>Linked Whisper speech-to-text, Gemini Pro and a fine-tuned Hugging Face model that classifies 6 emotional states, with replies synthesized through gTTS.</li>
+          </ul>
+          <p class="stack">Python, Flask, WebSockets, Whisper, Hugging Face Transformers. <a class="src" href="https://github.com/Namaswi24" target="_blank" rel="noopener">Source on GitHub</a></p>
+        </article>
+
       </div>
     </section>
 
-    <section>
-      <h2>Achievements & Skills</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Competitive Programming:</strong> 1200+ problems solved across LeetCode, Codeforces Specialist, CodeChef 3★.</li>
-          <li><strong>Competitions:</strong> National Semi-Finalist, Flipkart Grid 7.0.</li>
-          <li><strong>Languages & Tech:</strong> C++, Java, Python, JavaScript, Spring Boot, React, Node.js, Express, Flask, SQL, Linux, Git.</li>
-        </ul>
+    <section class="section" id="record" aria-labelledby="record-h">
+      <h2 id="record-h">Record</h2>
+      <div class="section-body">
+        <dl class="record">
+          <dt>Education</dt>
+          <dd><span class="figure">9.22</span> CGPA, B.Tech in Mathematics and Computing, IIT Indore, 2023–2027</dd>
+
+          <dt>Problems solved</dt>
+          <dd><span class="figure">1,200+</span> across LeetCode, Codeforces, CodeChef and GeeksforGeeks</dd>
+
+          <dt>Codeforces</dt>
+          <dd><span class="figure">Specialist, 1541</span><br>Ranked 800 of 29,300+ in Round 1115, top 2.7%</dd>
+
+          <dt>LeetCode</dt>
+          <dd><span class="figure">1781</span></dd>
+
+          <dt>CodeChef</dt>
+          <dd><span class="figure">3★, 1604</span></dd>
+
+          <dt>Flipkart Grid 7.0</dt>
+          <dd>National semi-finalist, 2025</dd>
+
+          <dt>Scholarship</dt>
+          <dd>Academic merit scholarship for 3 consecutive years, among the top 20% of female students</dd>
+
+          <dt>Open source</dt>
+          <dd>Contributor, GirlScript Summer of Code 2025</dd>
+
+          <dt>Mentoring</dt>
+          <dd>Codess Cafe mentee in 2024, mentor in 2026, guiding women in tech</dd>
+
+          <dt>Leadership</dt>
+          <dd>Under Secretary General of Public Affairs, MUN IIT Indore (2024–25), leading outreach and stakeholder communication. Volunteer with Avana Club on social welfare initiatives since 2024.</dd>
+        </dl>
       </div>
     </section>
-  </div>
+
+    <section class="section courses" aria-labelledby="courses-h">
+      <h2 id="courses-h">Coursework</h2>
+      <div class="section-body">
+        <p><strong>Computer science.</strong> Operating Systems, Computer Networks, Data Structures, Design and Analysis of Algorithms, Optimization Algorithms, Computational Intelligence, Blockchain.</p>
+        <p><strong>Mathematics.</strong> Stochastic Calculus, Monte Carlo Simulation, Probability and Statistics, Statistical Inference, Statistical Distribution Theory, Regression Analysis, Linear Programming, Discrete Mathematics, Data Science.</p>
+        <p><strong>Tools I use.</strong> C++, Java, Python, JavaScript, SQL, Spring Boot, Node.js, Express, React, Flask, NumPy, Pandas, Git, Linux.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h" class="sr-only" style="position:absolute;left:-9999px;">Contact</h2>
+      <p>I'm looking for software engineering roles starting in 2027. The fastest way to reach me is email.</p>
+      <a class="mail" href="mailto:namaswichowdary7@gmail.com">namaswichowdary7@gmail.com</a>
+      <ul class="elsewhere">
+        <li><a href="https://github.com/Namaswi24" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/namaswi2417" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="resume.pdf" download>Résumé (PDF)</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="wrap">Built by hand in HTML and CSS.</footer>
+
+  <script>
+    const links = document.querySelectorAll('.nav ul a');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => s && observer.observe(s));
+  </script>
 </body>
 </html>
