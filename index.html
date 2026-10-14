@@ -415,6 +415,14 @@
     .metrics dd { font-size: 2rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
     .metrics dt { color: var(--graphite); font-size: var(--step--1); }
 
+    .proj-team {
+      margin-top: var(--space-s);
+      padding-top: var(--space-s);
+      border-top: 1px solid var(--rule);
+      color: var(--graphite);
+      font-size: var(--step--1);
+    }
+
     .src {
       display: inline-block;
       margin-top: var(--space-s);
@@ -540,7 +548,7 @@
           <path class="wire wire--1" pathLength="1" d="M0 62 H160 C245 62 245 145 330 145"/>
           <text x="0" y="133">market price history</text>
           <path class="wire wire--2" pathLength="1" d="M0 145 H330"/>
-          <text x="0" y="216">contest data from three sites</text>
+          <text x="0" y="216">contest data from five sites</text>
           <path class="wire wire--3" pathLength="1" d="M0 228 H160 C245 228 245 145 330 145"/>
           <rect class="node" x="330" y="127" width="36" height="36" rx="3"/>
           <path class="wire wire--out" pathLength="1" d="M366 145 H548"/>
@@ -643,15 +651,15 @@
         <div class="proj-tabs" role="tablist" aria-label="Projects">
           <button class="proj-tab" role="tab" id="tab-finsight" aria-controls="panel-finsight" aria-selected="true">
             <span class="proj-tab__name">FinSight</span>
-            <span class="proj-tab__desc">Forecasting and portfolio risk</span>
+            <span class="proj-tab__desc">Bank stock forecasting and risk</span>
           </button>
           <button class="proj-tab" role="tab" id="tab-codecrux" aria-controls="panel-codecrux" aria-selected="false" tabindex="-1">
             <span class="proj-tab__name">CodeCrux</span>
-            <span class="proj-tab__desc">Competitive programming tracker</span>
+            <span class="proj-tab__desc">Competitive programming hub</span>
           </button>
           <button class="proj-tab" role="tab" id="tab-empathecho" aria-controls="panel-empathecho" aria-selected="false" tabindex="-1">
             <span class="proj-tab__name">EmpathEcho</span>
-            <span class="proj-tab__desc">Emotion-aware voice assistant</span>
+            <span class="proj-tab__desc">Emotion-aware voice companion</span>
           </button>
         </div>
 
@@ -664,19 +672,22 @@
           <div class="proj-detail">
             <div>
               <h3 class="proj-title">FinSight</h3>
-              <p class="proj-lead">An end-to-end pipeline that forecasts prices for 10 banking institutions and turns those forecasts into portfolio risk numbers.</p>
+              <p class="proj-lead">Forecasts 30-day prices for 10 major banks and turns those forecasts into the risk numbers a portfolio manager would actually look at.</p>
               <ul class="points">
-                <li>Combined LSTM and Random Forest models in a reinforcement-weighted ensemble.</li>
-                <li>Built a Monte Carlo engine generating 150,000 probabilistic price paths (500 paths over a 30-day horizon) to compute VaR, CVaR and Sharpe ratios for portfolio analysis.</li>
+                <li>Built a data pipeline on 5 years of Yahoo Finance prices for JPMorgan, Goldman Sachs, HSBC and seven other banks, using 60-day lookback windows with daily returns, volatility and beta against the S&amp;P 500 as features.</li>
+                <li>Trained a two-layer LSTM and a 100-tree Random Forest for each bank, then combined them with weights set by each model's inverse error, so the more accurate model counts more for that stock.</li>
+                <li>Simulated 500 Geometric Brownian Motion paths per bank over a 30-day horizon to estimate VaR, CVaR, Sharpe and Rachev ratios, served through an interactive Streamlit app.</li>
               </ul>
             </div>
             <aside>
               <dl class="metrics">
-                <div><dt>Normalized MAE</dt><dd>0.01–0.03</dd></div>
-                <div><dt>Simulated price paths</dt><dd>150,000</dd></div>
+                <div><dt>Normalized MAE, ensemble</dt><dd>0.01–0.03</dd></div>
+                <div><dt>Simulated 30-day price paths</dt><dd>5,000</dd></div>
+                <div><dt>Risk metrics per bank</dt><dd>4</dd></div>
               </dl>
-              <p class="stack">Python, LSTM, Random Forest, Monte Carlo simulation</p>
-              <a class="src" href="https://github.com/Namaswi24" target="_blank" rel="noopener">View source on GitHub</a>
+              <p class="stack">Python, TensorFlow and Keras, scikit-learn, yfinance, Streamlit</p>
+              <p class="proj-team">Team project with Janapareddy Vidya Varshini and Korubilli Vaishnavi.</p>
+              <a class="src" href="https://github.com/Namaswi24/MonteCarlo-Ensemble-Finance" target="_blank" rel="noopener">View source on GitHub</a>
             </aside>
           </div>
         </div>
@@ -690,17 +701,21 @@
           <div class="proj-detail">
             <div>
               <h3 class="proj-title">CodeCrux</h3>
-              <p class="proj-lead">One dashboard for competitive programmers, pulling contest schedules from Codeforces, LeetCode and AtCoder into a single view with personal progress tracking.</p>
+              <p class="proj-lead">A personal practice hub that pulls contests and problems from five judges into one place, with a daily problem that keeps you consistent.</p>
               <ul class="points">
-                <li>Aggregated contest schedules through the Clist.by API, with tag filtering and automated Google Calendar reminders.</li>
-                <li>Built user profiles, problem streaks and favorites lists on the MERN stack, secured with JWT authentication.</li>
+                <li>Aggregated upcoming contests from Codeforces, LeetCode, AtCoder, CodeChef and GeeksforGeeks through the Clist.by API, filterable by platform, duration and start time, with one-click Google Calendar reminders.</li>
+                <li>Built a daily challenge that suggests a new problem each day and tracks a streak, which resets at midnight if the problem goes unsolved.</li>
+                <li>Added problem search by title or ID, filtering by tag, difficulty and solved status, per-user favorites, and a dashboard of streaks and solving stats.</li>
+                <li>Wrote the backend in Node.js and Express on MongoDB, with JWT-authenticated sessions so each user's history, streaks and favorites persist across visits.</li>
               </ul>
             </div>
             <aside>
               <dl class="metrics">
-                <div><dt>Contest platforms in one view</dt><dd>3</dd></div>
+                <div><dt>Contest platforms in one view</dt><dd>5</dd></div>
+                <div><dt>Ways to filter problems</dt><dd>4</dd></div>
               </dl>
-              <p class="stack">MongoDB, Express, React, Node.js, JWT, Clist.by API</p>
+              <p class="stack">React, Node.js, Express, MongoDB, Mongoose, JWT, Clist.by API, Google Calendar</p>
+              <!-- Replace this link with the CodeCrux repo URL -->
               <a class="src" href="https://github.com/Namaswi24" target="_blank" rel="noopener">View source on GitHub</a>
             </aside>
           </div>
@@ -710,24 +725,25 @@
         <div class="proj-panel" role="tabpanel" id="panel-empathecho" aria-labelledby="tab-empathecho" tabindex="0">
           <figure class="proj-figure">
             <div class="proj-canvas" data-diagram="empathecho"></div>
-            <figcaption>How data moves through EmpathEcho. Dashed boxes are inputs, black boxes are outputs.</figcaption>
+            <figcaption>How a conversational turn moves through EmpathEcho. Dashed boxes are inputs, black boxes are outputs.</figcaption>
           </figure>
           <div class="proj-detail">
             <div>
               <h3 class="proj-title">EmpathEcho</h3>
-              <p class="proj-lead">A real-time voice assistant that listens for how you feel as well as what you say, and answers out loud.</p>
+              <p class="proj-lead">A voice companion that listens for how you feel as well as what you say, and answers out loud in near real time.</p>
               <ul class="points">
-                <li>Streamed audio both ways over Flask and WebSockets, with automatic silence detection so the backend starts work as soon as you stop speaking.</li>
-                <li>Linked Whisper speech-to-text, Gemini Pro and a fine-tuned Hugging Face emotion model, with replies synthesized through gTTS.</li>
+                <li>Streamed microphone audio in chunks from the browser to a Flask backend over a WebSocket, with client-side detection that ends a turn after 5 seconds of silence so no button press is needed.</li>
+                <li>Transcribed each turn with OpenAI Whisper, then classified it as happy, sad, surprised, angry, anxious or neutral with a fine-tuned Hugging Face Transformers model.</li>
+                <li>Sent the transcript and detected emotion to Gemini Pro to write an empathetic reply, converted it to audio with gTTS and pydub, and streamed it back over the same socket.</li>
               </ul>
             </div>
             <aside>
               <dl class="metrics">
-                <div><dt>Emotional states classified</dt><dd>6</dd></div>
-                <div><dt>Silence cut-off</dt><dd>5 s</dd></div>
+                <div><dt>Emotions recognised</dt><dd>6</dd></div>
+                <div><dt>Silence before a turn ends</dt><dd>5 s</dd></div>
               </dl>
-              <p class="stack">Python, Flask, WebSockets, Whisper, Gemini Pro, Hugging Face Transformers, gTTS</p>
-              <a class="src" href="https://github.com/Namaswi24" target="_blank" rel="noopener">View source on GitHub</a>
+              <p class="stack">Python, Flask, Flask-Sock, Whisper, Hugging Face Transformers, Gemini API, gTTS, MediaRecorder API</p>
+              <a class="src" href="https://github.com/vidhhya1/Conversational-Emotion-Recognizer" target="_blank" rel="noopener">View source on GitHub</a>
             </aside>
           </div>
         </div>
@@ -806,44 +822,45 @@
        kind: 'source' (dashed input), 'output' (black), or omit for a process step. */
     const DIAGRAMS = {
       finsight: {
-        label: 'FinSight data flow: price history feeds LSTM and Random Forest models, combined in a weighted ensemble, then a Monte Carlo engine that outputs VaR, CVaR and Sharpe ratio.',
-        cols: 5,
-        nodes: [
-          { id: 'p', col: 0, y: 110, label: 'Price history', sub: '10 institutions', kind: 'source' },
-          { id: 'l', col: 1, y: 30,  label: 'LSTM', sub: 'sequence model' },
-          { id: 'r', col: 1, y: 190, label: 'Random Forest', sub: 'tree ensemble' },
-          { id: 'e', col: 2, y: 110, label: 'Ensemble', sub: 'RL-weighted' },
-          { id: 'm', col: 3, y: 110, label: 'Monte Carlo', sub: '150,000 paths' },
-          { id: 'v', col: 4, y: 10,  label: 'VaR', sub: 'value at risk', kind: 'output' },
-          { id: 'c', col: 4, y: 110, label: 'CVaR', sub: 'tail loss', kind: 'output' },
-          { id: 's', col: 4, y: 210, label: 'Sharpe ratio', sub: 'risk-adjusted', kind: 'output' }
-        ],
-        edges: [['p','l'],['p','r'],['l','e'],['r','e'],['e','m'],['m','v'],['m','c'],['m','s']]
-      },
-      codecrux: {
-        label: 'CodeCrux data flow: Codeforces, LeetCode and AtCoder schedules come through the Clist.by API into an Express and MongoDB backend, which serves the React client and creates Google Calendar reminders.',
-        cols: 4,
-        nodes: [
-          { id: 'cf', col: 0, y: 10,  label: 'Codeforces', sub: 'contests', kind: 'source' },
-          { id: 'lc', col: 0, y: 100, label: 'LeetCode', sub: 'contests', kind: 'source' },
-          { id: 'ac', col: 0, y: 190, label: 'AtCoder', sub: 'contests', kind: 'source' },
-          { id: 'cl', col: 1, y: 100, label: 'Clist.by API', sub: 'aggregation' },
-          { id: 'api', col: 2, y: 100, label: 'Express API', sub: 'MongoDB, JWT' },
-          { id: 'ui', col: 3, y: 40,  label: 'React client', sub: 'streaks, filters', kind: 'output' },
-          { id: 'cal', col: 3, y: 160, label: 'Google Calendar', sub: 'reminders', kind: 'output' }
-        ],
-        edges: [['cf','cl'],['lc','cl'],['ac','cl'],['cl','api'],['api','ui'],['api','cal']]
-      },
-      empathecho: {
-        label: 'EmpathEcho data flow: live audio streams to a Flask WebSocket server, Whisper transcribes it, an emotion model classifies it, Gemini Pro writes a reply, and gTTS speaks it.',
+        label: 'FinSight data flow: five years of Yahoo Finance prices are preprocessed into 60-day windows, fed to an LSTM and a Random Forest, combined by inverse-error weights, then run through a Monte Carlo engine that outputs tail-risk and risk-adjusted return metrics.',
         cols: 6,
         nodes: [
-          { id: 'a', col: 0, y: 100, label: 'Live audio', sub: 'microphone', kind: 'source' },
-          { id: 'f', col: 1, y: 100, label: 'Flask server', sub: 'WebSocket stream' },
+          { id: 'y',  col: 0, y: 110, label: 'Yahoo Finance', sub: '5 years, 10 banks', kind: 'source' },
+          { id: 'pp', col: 1, y: 110, label: 'Preprocessing', sub: '60-day windows' },
+          { id: 'l',  col: 2, y: 30,  label: 'LSTM', sub: '64 → 32 units' },
+          { id: 'r',  col: 2, y: 190, label: 'Random Forest', sub: '100 trees' },
+          { id: 'e',  col: 3, y: 110, label: 'Ensemble', sub: 'weighted by error' },
+          { id: 'm',  col: 4, y: 110, label: 'Monte Carlo', sub: '500 paths per bank' },
+          { id: 'v',  col: 5, y: 30,  label: 'VaR, CVaR', sub: 'tail risk', kind: 'output' },
+          { id: 's',  col: 5, y: 190, label: 'Sharpe, Rachev', sub: 'risk vs. reward', kind: 'output' }
+        ],
+        edges: [['y','pp'],['pp','l'],['pp','r'],['l','e'],['r','e'],['e','m'],['m','v'],['m','s']]
+      },
+      codecrux: {
+        label: 'CodeCrux data flow: contests from five sites arrive through the Clist.by API and problem data through a sync service, both into an Express and MongoDB backend that serves the dashboard, the problem list and Google Calendar reminders.',
+        cols: 4,
+        nodes: [
+          { id: 'cs',   col: 0, y: 20,  label: 'Contest sites', sub: '5 platforms', kind: 'source' },
+          { id: 'ps',   col: 0, y: 170, label: 'Problem sets', sub: 'platform APIs', kind: 'source' },
+          { id: 'cl',   col: 1, y: 20,  label: 'Clist.by API', sub: 'contest schedules' },
+          { id: 'sy',   col: 1, y: 170, label: 'Sync service', sub: 'solved history' },
+          { id: 'api',  col: 2, y: 95,  label: 'Express API', sub: 'JWT, MongoDB' },
+          { id: 'dash', col: 3, y: 0,   label: 'Dashboard', sub: 'streaks, stats', kind: 'output' },
+          { id: 'list', col: 3, y: 95,  label: 'Problem list', sub: 'tags, difficulty', kind: 'output' },
+          { id: 'cal',  col: 3, y: 190, label: 'Google Calendar', sub: 'contest reminders', kind: 'output' }
+        ],
+        edges: [['cs','cl'],['ps','sy'],['cl','api'],['sy','api'],['api','dash'],['api','list'],['api','cal']]
+      },
+      empathecho: {
+        label: 'EmpathEcho data flow: browser audio streams over a WebSocket to Flask, Whisper transcribes it, an emotion model classifies it, Gemini Pro writes a reply from the text and emotion, and gTTS turns it into speech streamed back to the browser.',
+        cols: 6,
+        nodes: [
+          { id: 'a', col: 0, y: 100, label: 'Browser mic', sub: '5 s silence cut-off', kind: 'source' },
+          { id: 'f', col: 1, y: 100, label: 'Flask-Sock', sub: 'WebSocket stream' },
           { id: 'w', col: 2, y: 100, label: 'Whisper', sub: 'speech to text' },
-          { id: 'e', col: 3, y: 10,  label: 'Emotion model', sub: '6 states' },
-          { id: 'g', col: 4, y: 100, label: 'Gemini Pro', sub: 'writes the reply' },
-          { id: 't', col: 5, y: 100, label: 'gTTS', sub: 'spoken reply', kind: 'output' }
+          { id: 'e', col: 3, y: 10,  label: 'Emotion model', sub: '6 classes' },
+          { id: 'g', col: 4, y: 100, label: 'Gemini Pro', sub: 'text + emotion' },
+          { id: 't', col: 5, y: 100, label: 'gTTS + pydub', sub: 'streamed back', kind: 'output' }
         ],
         edges: [['a','f'],['f','w'],['w','e'],['w','g'],['e','g'],['g','t']]
       }
