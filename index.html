@@ -6,7 +6,7 @@
   <title>Namaswi Mullapudi</title>
   <meta name="description" content="Namaswi Mullapudi: software engineer, Mathematics and Computing at IIT Indore, former Core Tech intern at D. E. Shaw & Co.">
   <meta property="og:title" content="Namaswi Mullapudi">
-  <meta property="og:description" content="I connect systems that were never designed to talk to each other.">
+  <meta property="og:description" content="Namaswi Mullapudi | Software Engineer">
   <meta name="theme-color" content="#FFFFFF">
   <script>document.documentElement.classList.add('js');</script>
 
@@ -155,21 +155,24 @@
       gap: var(--space-xl);
       padding-block: calc(var(--space-xl) * 1.15) var(--space-l);
     }
-    .hero__who { font-weight: 600; margin-bottom: var(--space-m); }
-    .hero__who span { color: var(--graphite); font-weight: 400; }
     .hero__statement {
       font-size: var(--step-5);
-      font-weight: 500;
-      line-height: 1.08;
+      font-weight: 700;
+      line-height: 1.1;
       letter-spacing: -0.03em;
-      max-width: 19ch;
       margin-bottom: var(--space-m);
-      text-wrap: balance;
+    }
+    .hero__role {
+      display: block;
+      color: var(--graphite);
+      font-weight: 400;
+      font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2.2rem);
+      margin-top: 0.2rem;
     }
     .hero__lede {
       font-size: var(--step-1);
       color: var(--graphite);
-      max-width: 40ch;
+      max-width: 44ch;
       margin-bottom: var(--space-l);
       text-wrap: pretty;
     }
@@ -532,9 +535,11 @@
 
     <header class="hero">
       <div>
-        <p class="hero__who">Namaswi Mullapudi <span>Software engineer</span></p>
-        <h1 class="hero__statement">I connect systems that were never designed to talk to each other.</h1>
-        <p class="hero__lede">Then I turn what flows between them into something a person can act on: an alert on the right row, a risk number, a reminder before the contest starts.</p>
+        <h1 class="hero__statement">
+          Namaswi Mullapudi
+          <span class="hero__role">Software Engineer</span>
+        </h1>
+        <p class="hero__lede">I connect systems that were never designed to talk to each other, turning complex data flows into immediate, actionable signals.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="mailto:namaswichowdary7@gmail.com">Get in touch</a>
           <a class="btn btn--plain" href="#projects">See projects</a>
@@ -715,7 +720,6 @@
                 <div><dt>Ways to filter problems</dt><dd>4</dd></div>
               </dl>
               <p class="stack">React, Node.js, Express, MongoDB, Mongoose, JWT, Clist.by API, Google Calendar</p>
-              <!-- Replace this link with the CodeCrux repo URL -->
               <a class="src" href="https://github.com/Namaswi24" target="_blank" rel="noopener">View source on GitHub</a>
             </aside>
           </div>
